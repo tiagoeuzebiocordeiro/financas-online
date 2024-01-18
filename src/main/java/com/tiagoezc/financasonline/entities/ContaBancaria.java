@@ -4,13 +4,26 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_contas_bancarias")
 public class ContaBancaria implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String titular;
 	private String tipoConta; // CPF ou CNPJ
 	private Double saldo;
+	@OneToMany(mappedBy = "contaAssociada", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Despesa> despesas;
 	
 	public ContaBancaria() {
