@@ -23,6 +23,25 @@ public class ContaBancariaService {
 		return conta;
 	}
 	
+	public ContaBancaria create(ContaBancaria obj) { 
+		
+		obj.setId(null);
+		return repository.save(obj);
+		
+	}
+	
+	public void delete(Long id) {
+		
+		ContaBancaria conta = findById(id);
+		if (conta.getSaldo() > 0) {
+			throw new RuntimeException("Não foi possível deletar a conta. Motivo: você ainda possui saldo! Saque tudo para deletar!");
+		} else if (!conta.getDespesas().isEmpty()) {
+			throw new RuntimeException("Não foi possível deletar a conta. Motivo: você possui despesas pendentes!");
+		}
+		
+		repository.deleteById(id);
+	}
+	
 	public void depositar(Long contaId, double valor) {
 		ContaBancaria conta = findById(contaId);
 		if (valor < 0) {
