@@ -75,6 +75,17 @@ public class ContaBancaria implements Serializable {
 		this.despesas = despesas;
 	}
 	
+	// Eu estou fazendo as validações no Service.
+	public void depositar(double valor) {
+		saldo += valor;
+		System.out.println("Você depositou R$" + valor);
+	}
+	// Eu estou fazendo as validações no Service.
+	public void sacar(double valor) {
+		saldo -= valor;
+		System.out.println("Você sacou R$" + valor);
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

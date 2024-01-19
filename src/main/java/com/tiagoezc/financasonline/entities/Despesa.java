@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +26,7 @@ public class Despesa implements Serializable {
 	private Double valor;
 	private LocalDate dataDespesa;
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "conta_bancaria_id")
 	private ContaBancaria contaAssociada;
 	
