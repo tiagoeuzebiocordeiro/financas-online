@@ -40,6 +40,7 @@ public class Despesa implements Serializable {
 		this.valor = valor;
 		this.dataDespesa = dataDespesa;
 	}
+	
 
 	public Long getId() {
 		return id;

@@ -70,5 +70,11 @@ public class ContaBancariaService {
 		repository.save(conta);
 		
 	}
+
+	public void pagar(Long contaId) {
+		ContaBancaria conta = findById(contaId); // aq acho a conta
+		conta.pagar();
+		repository.save(conta);
+	}
 	
 }

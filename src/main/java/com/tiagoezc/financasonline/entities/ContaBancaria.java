@@ -43,6 +43,20 @@ public class ContaBancaria implements Serializable {
 		this.tipoConta = request.getTipoConta();
 	}
 	
+	//local var
+		
+		public void pagar() {
+			double soma = 0.0;
+			for (int i = 0; i< despesas.size(); i++ ) {
+				soma += despesas.get(i).getValor();
+			}
+			if (soma > this.saldo) {
+				throw new RuntimeException("Não foi possível pagar as despesas! Saldo insuficiente!");
+			}
+			this.saldo -= soma; // aqui vai ser tipo: se eu tenho 800 e as despesas deu 600, fica: saldo = 800 - 600 = 200 de saldo e as despesas devem ZERAR.
+			this.despesas.clear(); // aqui zera
+		}
+	
 	public Long getId() {
 		return id;
 	}

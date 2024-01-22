@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.tiagoezc.financasonline.dtos.ContaBancariaCreateRequest;
 import com.tiagoezc.financasonline.entities.ContaBancaria;
+import com.tiagoezc.financasonline.entities.Despesa;
 import com.tiagoezc.financasonline.services.ContaBancariaService;
 
 @RequestMapping(value = "/contasbancarias")
@@ -68,5 +69,16 @@ public class ContaBancariaController {
 		return ResponseEntity.ok("Você sacou R$" + valor + " na conta bancária de titular: " + conta.getTitular());
 	}
 	
+	@PostMapping("/pagardespesas/{contaId}")
+	public ResponseEntity<String> pagarDespesas(@PathVariable Long contaId) {
+		ContaBancaria conta = service.findById(contaId);
+		double valor = 0.0;
+		for (int i = 0; i < conta.getDespesas().size(); i++) {
+			Despesa despesa = conta.getDespesas().get(i);
+			valor += despesa.getValor();
+		}
+		service.pagar(contaId);
+		return ResponseEntity.ok("Você pagou as despesas da conta de titular: " + conta.getTitular() + ", de VALOR = R$" + valor);
+	}
 	
 }
