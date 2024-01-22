@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tiagoezc.financasonline.ContaBancariaCreateRequest;
+import com.tiagoezc.financasonline.dtos.ContaBancariaCreateRequest;
 import com.tiagoezc.financasonline.entities.ContaBancaria;
 import com.tiagoezc.financasonline.repositories.ContaBancariaRepository;
 

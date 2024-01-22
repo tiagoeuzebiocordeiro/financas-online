@@ -1,4 +1,4 @@
-package com.tiagoezc.financasonline;
+package com.tiagoezc.financasonline.dtos;
 
 import com.tiagoezc.financasonline.entities.ContaBancaria;
 

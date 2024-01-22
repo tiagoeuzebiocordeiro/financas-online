@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-import com.tiagoezc.financasonline.ContaBancariaCreateRequest;
+import com.tiagoezc.financasonline.dtos.ContaBancariaCreateRequest;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

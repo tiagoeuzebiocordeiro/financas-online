@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.tiagoezc.financasonline.ContaBancariaCreateRequest;
+import com.tiagoezc.financasonline.dtos.ContaBancariaCreateRequest;
 import com.tiagoezc.financasonline.entities.ContaBancaria;
 import com.tiagoezc.financasonline.services.ContaBancariaService;
 
