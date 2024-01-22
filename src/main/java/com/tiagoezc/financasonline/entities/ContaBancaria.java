@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+import com.tiagoezc.financasonline.ContaBancariaCreateRequest;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +37,12 @@ public class ContaBancaria implements Serializable {
 		this.saldo = saldo;
 	}
 
+	public ContaBancaria(ContaBancariaCreateRequest request) {
+		this.id = request.getId();
+		this.titular = request.getTitular();
+		this.tipoConta = request.getTipoConta();
+	}
+	
 	public Long getId() {
 		return id;
 	}

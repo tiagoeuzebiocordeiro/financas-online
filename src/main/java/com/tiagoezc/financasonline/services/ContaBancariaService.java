@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tiagoezc.financasonline.ContaBancariaCreateRequest;
 import com.tiagoezc.financasonline.entities.ContaBancaria;
 import com.tiagoezc.financasonline.repositories.ContaBancariaRepository;
 
@@ -23,10 +24,12 @@ public class ContaBancariaService {
 		return conta;
 	}
 	
-	public ContaBancaria create(ContaBancaria obj) { 
+	public ContaBancaria create(ContaBancariaCreateRequest objRequestCreate) { 
 		
-		obj.setId(null);
-		return repository.save(obj);
+		objRequestCreate.setId(null);
+		ContaBancaria contaNew = new ContaBancaria(objRequestCreate);
+		contaNew.setSaldo(0.0);
+		return repository.save(contaNew);
 		
 	}
 	

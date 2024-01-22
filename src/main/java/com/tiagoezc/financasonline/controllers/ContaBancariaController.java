@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.tiagoezc.financasonline.ContaBancariaCreateRequest;
 import com.tiagoezc.financasonline.entities.ContaBancaria;
 import com.tiagoezc.financasonline.services.ContaBancariaService;
 
@@ -38,10 +39,10 @@ public class ContaBancariaController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<ContaBancaria> create(@RequestBody ContaBancaria conta) {
-		conta = service.create(conta);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("{/id}").buildAndExpand(conta.getId()).toUri();
-		return ResponseEntity.created(uri).body(conta);
+	public ResponseEntity<ContaBancariaCreateRequest> create(@RequestBody ContaBancariaCreateRequest conta) {
+		ContaBancaria newObj = service.create(conta);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("{/id}").buildAndExpand(newObj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
 	}
 	
 	@DeleteMapping("/{id}")
