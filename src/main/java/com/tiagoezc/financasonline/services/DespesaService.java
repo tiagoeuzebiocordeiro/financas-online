@@ -40,10 +40,10 @@ public class DespesaService {
 	
 	
 	public void delete(Long id) {
-		//Despesa despesa = findById(id);
-		/*if (despesa.getContaAssociada() != null) {
+		Despesa despesa = findById(id);
+		if (despesa.getContaAssociada() != null) {
 			throw new RuntimeException("Esta despesa está associada com uma conta! Impossível deletar!");
-		}*/
+		}
 		repository.deleteById(id);
 	}
 }
